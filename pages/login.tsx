@@ -19,9 +19,9 @@ export default function SignIn() {
     setIsLoading(true)
     const response = await login(email, password).catch(() => setError(true))
     if (response) {
+      router.replace("/")
       const { bearer_token } = response.data.data
       localStorage.setItem("bearer_token", bearer_token)
-      router.push("/")
     }
     setIsLoading(false)
   }

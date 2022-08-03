@@ -130,6 +130,7 @@ export const useEvents = (rawDate: string): UseEvents => {
         setError(true)
       })
       .finally(() => setIsLoading(false))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return { events, isLoading }

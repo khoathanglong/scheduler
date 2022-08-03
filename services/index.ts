@@ -44,6 +44,17 @@ api.interceptors.request.use(
   }
 )
 
+api.interceptors.response.use(
+  (config) => config,
+  (error) => {
+    if (error.response.status === 401) {
+      localStorage.removeItem("bearer_token")
+      window.location.href = "/login"
+    }
+    return Promise.reject(error)
+  }
+)
+
 interface LoginResponse {
   data: {
     bearer_token: string
